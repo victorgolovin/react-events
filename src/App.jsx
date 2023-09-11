@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Button from './Button'
+import Counter2 from './Counter2'
 
 const App = () => {
 
@@ -31,7 +32,7 @@ const App = () => {
     console.log(counter);
   }
 
-//--------------------------------------
+  //--------------------------------------
 
 const [name, setName] = useState('Victor');
 
@@ -43,7 +44,29 @@ const [name, setName] = useState('Victor');
     setName('Rin')
   }
 
+  //--------------------------------------
 
+  const [counter2, setCounter2] = useState(0);
+
+  
+
+  const handleMinusBtnClick12 = () => {
+    setCounter2(counter2 - 1)
+  }
+
+  const handlePlusBtnClick22 = () => {
+    setCounter2(counter2 + 1)
+  }
+
+  const isMinusBtmDisabled = () => {
+    return counter2 === -5;
+  }
+
+  const isPlusBtmDisabled = () => {
+    return counter2 === +5;
+  }
+
+  
   
   return (
     <div>
@@ -56,27 +79,45 @@ const [name, setName] = useState('Victor');
       >
       Push me
       </button>
+
 {/* ---------------------------------------- */}
+
       <div>
         <Button 
         text={'-'}
         onClick={handleMinusBtnClick}/>
 
-        <Button text='+'
+        <Button text={'+'}
         onClick={handlePlusBtnClick} />
         <p>{counter}</p>
       </div>
+
 {/* ---------------------------------------- */}
-<div>
+
+      <div>
         <Button 
         text={'-'}
         onClick={handleNameOneBtn}/>
 
-        <Button text='+'
+        <Button text={'+'}
         onClick={handleNameTwoBtn} />
         <p>{name}</p>
       </div>
-      
+
+{/* ---------------------------------------- */}
+      <div>
+        <Button 
+        text={'-'}
+        isDisabled={isMinusBtmDisabled()}
+        onClick={handleMinusBtnClick12}/>
+
+        <Button 
+        text={'+'}
+        isDisabled={isPlusBtmDisabled()}
+        onClick={handlePlusBtnClick22} />
+        <Counter2 
+        value={counter2}/>
+      </div>
     </div>
   )
 
