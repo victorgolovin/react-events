@@ -2,6 +2,12 @@ import React, {useState} from 'react'
 import Button from './Button'
 import Counter2 from './Counter2'
 
+const INITIAL_COUNTER = 0;
+const COUNTER_STEP = 1;
+const MAX_COUNTER_VALUE = 5;
+const MIN_COUNTER_VALUE = -5;
+
+
 const App = () => {
 
   const handleClick = () => {
@@ -19,16 +25,16 @@ const App = () => {
   
   //------------------------------------
 
-  const [counter, setCounter] = useState(0);
-  console.log(useState(0));
+  const [counter, setCounter] = useState(INITIAL_COUNTER);
+  console.log(useState(INITIAL_COUNTER));
 
   const handleMinusBtnClick = () => {
-    setCounter(counter - 1)
+    setCounter(counter - COUNTER_STEP)
     console.log(counter);
   }
 
   const handlePlusBtnClick = () => {
-    setCounter(counter + 1)
+    setCounter(counter + COUNTER_STEP)
     console.log(counter);
   }
 
@@ -46,27 +52,29 @@ const [name, setName] = useState('Victor');
 
   //--------------------------------------
 
-  const [counter2, setCounter2] = useState(0);
+  const [counter2, setCounter2] = useState(INITIAL_COUNTER);
 
   
 
   const handleMinusBtnClick12 = () => {
-    setCounter2(counter2 - 1)
+    setCounter2(counter2 - COUNTER_STEP)
   }
 
   const handlePlusBtnClick22 = () => {
-    setCounter2(counter2 + 1)
+    setCounter2(counter2 + COUNTER_STEP)
   }
 
   const isMinusBtmDisabled = () => {
-    return counter2 === -5;
+    return counter2 <= MIN_COUNTER_VALUE;
   }
 
   const isPlusBtmDisabled = () => {
-    return counter2 === +5;
+    return counter2 >= MAX_COUNTER_VALUE;
   }
 
-  
+  const isCounterRed = () => {
+    return counter2 <= MIN_COUNTER_VALUE || counter2 >= MAX_COUNTER_VALUE;
+  }
   
   return (
     <div>
@@ -116,12 +124,11 @@ const [name, setName] = useState('Victor');
         isDisabled={isPlusBtmDisabled()}
         onClick={handlePlusBtnClick22} />
         <Counter2 
-        value={counter2}/>
+        value={counter2}
+        isRed={isCounterRed()}/>
       </div>
     </div>
   )
-
-  
 }
 
 export default App

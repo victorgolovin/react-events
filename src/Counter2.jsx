@@ -1,10 +1,13 @@
 import React from 'react'
+import './Counter2.css'
+
+const Counter2 = ( {value, isRed} ) => {
+    const classnames = isRed ? 'counter counter-red' : 'counter';
 
 
-const Counter2 = ( {value} ) => {
     return (
-        <p>
-        {value}
+        <p className={classnames}>
+        {value} {isRed ? 'вышли за пределы' : ''}
         </p>
     )
 }
