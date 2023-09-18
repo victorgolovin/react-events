@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Button from './Button'
 import Counter2 from './Counter2'
 
+
 const INITIAL_COUNTER = 0;
 const COUNTER_STEP = 1;
 const MAX_COUNTER_VALUE = 5;
